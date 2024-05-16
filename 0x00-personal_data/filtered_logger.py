@@ -1,12 +1,9 @@
 #!/usr/bin/env python3
-"""
-Defines a logger with custom log formatter
-"""
+""" """
 import os
 import re
 import logging
 from typing import List, Tuple
-
 import mysql.connector
 
 
@@ -63,8 +60,7 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
     return connector
 
 
-def main() -> None:
-    """ """
+if __name__ == '__main__':
     db = get_db()
     logger = get_logger()
     cursor = db.cursor()
@@ -79,7 +75,3 @@ def main() -> None:
         logger.info(msg)
     cursor.close()
     db.close()
-
-
-if __name__ == '__main__':
-    main()
