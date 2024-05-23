@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """ create a class to manage the API authentication """
 from typing import List, TypeVar
+import os
 
 
 class Auth:
     """ auth class """
+
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """ require auth method """
         if path is None:
@@ -36,3 +38,10 @@ class Auth:
     def current_user(self, request=None) -> TypeVar('User'):
         """ current user method"""
         return None
+
+    def session_cookie(self, request=None):
+        """ def session cookie auth """
+        if request is None:
+            return None
+        session_name = os.getenv('SESSION_NAME')
+        return request.cookies.get(session_name)
