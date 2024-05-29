@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""
-Authentication module
-"""
+""" Authentication module """
 import bcrypt
 from sqlalchemy.orm.exc import NoResultFound
 from db import DB
@@ -13,7 +11,7 @@ def _generate_uuid():
     return str(uuid4())
 
 
-def _hash_password(password):
+def _hash_password(password: str)-> bytes:
     """ encrypts a pass with bcrypt"""
     return bcrypt.hashpw(password.encode(), bcrypt.gensalt())
 
